@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="imdbApp">
 <head>
 	<title>Internet Movie Database</title>
 	<meta charset="utf-8">
@@ -10,7 +10,7 @@
     <!-- Load custom styles -->
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
-<body>
+<body ng-controller="ctrlMain">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4">
@@ -25,8 +25,8 @@
 		<!-- input search -->
 		<div class="row">
 			<div class="col-md-12">
-				<input type="text" name="" value="" placeholder="" class="form-control txtSearch">
-			</div>
+				<input type="text" ng-model="txtSearch" ng-change="getMovies(this)" class="form-control txtSearch">
+			</div>			
 		</div>
 
 		<div class="row">
@@ -57,6 +57,7 @@
     <script src="js/bootstrap.min.js" ></script>
     <script src="js/angular.min.js"></script>
 	<script src="js/angular-route.min.js"></script>
+	<script src="js/app.js"></script>
 
 
 </body>
