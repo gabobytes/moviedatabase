@@ -18,7 +18,7 @@
 			</div>
 			<div class="col-md-4 offset-md-4" style="text-align: right;">
 				<i class="fa fa-cog fa-4x" aria-hidden="true" style="padding-right: 15px;"></i>
-				<i class="fa fa-search fa-4x" aria-hidden="true"></i>
+				<i class="fa fa-search fa-4x" aria-hidden="true" ng-click="search = !search"></i>
 			</div>
 		</div>
 		
@@ -26,7 +26,7 @@
 
 		<div class="row">
 			<div class="col-md-12">
-				<input type="text" ng-model="txtSearch" ng-change="getMovies(this)" class="form-control txtSearch">
+				<input type="text" ng-model="txtSearch" ng-change="getMovies(this)" class="form-control txtSearch" ng-show="search">
 			</div>			
 		</div>	
 
