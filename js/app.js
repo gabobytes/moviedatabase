@@ -4,8 +4,7 @@ app.controller('ctrlMain', function($scope,$http){
 
 	//Variables
 	var URL = 'http://www.omdbapi.com/?s=';
-	var results = [];
-	var arr = [];
+	var movies = [];
 	
 	//method search
 	$scope.getMovies = function(query){
@@ -14,10 +13,9 @@ app.controller('ctrlMain', function($scope,$http){
 	//watcher to reset results array when start a new search
 	$scope.$watch('query', function(){
 		if(query === ''){			
-			results = [];
+			movies = [];
 		}
-	});
-	//http://stackoverflow.com/questions/41169385/http-get-success-is-not-a-function
+	});	
 
 	//get data from IDMB API
 	if(query != ''){
@@ -26,27 +24,14 @@ app.controller('ctrlMain', function($scope,$http){
 		$http.get(URL + query)
 		.then( function (success){
 			//save all results				
-			success.data.Search.forEach(function(element,index,array){
-				//console.log("items",element);
-				results.push(element);
+			success.data.Search.forEach(function(element,index,array){			
+				movies.push(element);
 			});
-			
-			console.log(success.data , results.length);
+
 		}, function( error ){
 			console.log(error);
 		 });
 		}
-
-		//filter only movies
-		movies = results;
-
-		console.log("Movies ", results);
-
 	return $scope.movies = movies;
 	}
-
-	//method save 
-
-
-
 });
