@@ -33,7 +33,14 @@
 		<div class="row">
 			<div class="col-md-4" ng-repeat="movie in movies">
 				<figure>
-					<a href=""><img src="{{movie.Poster}}" alt="" width="400" height="300" class="img-thumbnail"></a>
+					<a href="">
+						<div ng-if="movie.Poster != 'N/A'" >
+							<img ng-src="{{movie.Poster}}" class="img-thumbnail" alt="{{movie.Title}}" >
+						</div>
+						<div ng-if="movie.Poster === 'N/A'" >
+							<img ng-src="http://epaper2.mid-day.com/images/no_image_thumb.gif" class="img-thumbnail" alt="{{movie.Title}}" >
+						</div>						
+					</a>
 					<figcaption>{{movie.Title}}</figcaption>
 				</figure>
 			</div>

@@ -5,6 +5,7 @@ app.controller('ctrlMain', function($scope,$http){
 	//Variables
 	var URL = 'http://www.omdbapi.com/?s=';
 	var results = [];
+	var arr = [];
 	
 	//method search
 	$scope.getMovies = function(query){
@@ -21,10 +22,15 @@ app.controller('ctrlMain', function($scope,$http){
 	//get data from IDMB API
 	if(query != ''){
 		//getting data from API
+		
 		$http.get(URL + query)
 		.then( function (success){
-			//save all results	
-			results.push(success.data.Search);
+			//save all results				
+			success.data.Search.forEach(function(element,index,array){
+				//console.log("items",element);
+				results.push(element);
+			});
+			
 			console.log(success.data , results.length);
 		}, function( error ){
 			console.log(error);
@@ -32,9 +38,7 @@ app.controller('ctrlMain', function($scope,$http){
 		}
 
 		//filter only movies
-		movies = results.filter(function(result){
-			return result.Response === 'True';
-		});		
+		movies = results;
 
 		console.log("Movies ", results);
 
