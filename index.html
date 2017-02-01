@@ -21,34 +21,22 @@
 				<i class="fa fa-search fa-4x" aria-hidden="true"></i>
 			</div>
 		</div>
-
+		
 		<!-- input search -->
+
 		<div class="row">
 			<div class="col-md-12">
 				<input type="text" ng-model="txtSearch" ng-change="getMovies(this)" class="form-control txtSearch">
 			</div>			
-		</div>
+		</div>	
 
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-4" ng-repeat="movie in movies">
 				<figure>
-					<img src="img/terminator.jpg" alt="" width="400" height="300" class="img-thumbnail">
-					<figcaption>This is the title of the Movie</figcaption>
+					<a href=""><img src="{{movie.Poster}}" alt="" width="400" height="300" class="img-thumbnail"></a>
+					<figcaption>{{movie.Title}}</figcaption>
 				</figure>
 			</div>
-			<div class="col-md-4">
-				<figure>
-					<img src="img/terminator.jpg" alt="" width="400" height="300" class="img-thumbnail">
-					<figcaption>This is the title of the Movie</figcaption>
-				</figure>
-			</div>
-			<div class="col-md-4">
-				<figure>
-					<img src="img/terminator.jpg" alt="" width="400" height="300" class="img-thumbnail">
-					<figcaption>This is the title of the Movie</figcaption>
-				</figure>
-			</div>						
-
 		</div>
 	</div>
 
