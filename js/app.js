@@ -29,7 +29,7 @@ app.controller('ctrlMain', function($scope,$http){
 					movies.push(element);
 					});
 				}else{
-				  $scope.message = 'Movie/Serie Not Found';
+				  $scope.message = 'The Movie/Serie '+ query + ' was not found.';
 				}					
 
 		}, function( Error ){
@@ -37,6 +37,7 @@ app.controller('ctrlMain', function($scope,$http){
 		 });
 		}
 
+		//sending all the array of movies found
 		$scope.movies = movies;
 	}
 });
