@@ -4,8 +4,6 @@ app.controller('ctrlMain', function($scope,$http){
 
 	//Variables
 	var URL = 'http://www.omdbapi.com/?';	
-	
-
 	//show or hide text box
 	$scope.search = false;
 
@@ -44,7 +42,23 @@ app.controller('ctrlMain', function($scope,$http){
 
 	//method show info movie on mouse over
 	$scope.preview = function(id){
-		//http://www.omdbapi.com/?i=tt1147717
+	 $scope.actors = '';
+	 $scope.rating = '';
+
+
+
+		$http.get(URL + "i=" + id)
+		.then( function(success) {
+
+			status = success.data.Response;
+			
+			if(status === 'True'){
+				$scope.rating = success.data.imdbRating;			
+
+			}
+		},function(Error){
+			$scope.message = Error;
+		});
 	}
 });
 
