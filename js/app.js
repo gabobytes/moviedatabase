@@ -1,6 +1,21 @@
-var app = angular.module('imdbApp',['infinite-scroll']);
+var app = angular.module('imdbApp',['infinite-scroll','ngRoute']);
 
-app.controller('ctrlMain', function($scope,$http){
+app.config(function($routeProvider,$locationProvider){
+	$locationProvider.hashPrefix('');
+
+	$routeProvider
+		.when('/search', {
+			templateUrl: 'pages/search.html',
+			controller: 'ctrlMain'
+		})
+		.when('/detail/:id',{
+			templateUrl	: 'pages/detail.html',
+			controller 	: 'detailController'
+		})
+		.otherwise({ redirectTo: '/' });
+});
+
+app.controller('ctrlMain', function($scope,$http,$location){
 
 	//Variables
 	var URL = 'http://www.omdbapi.com/?';	
@@ -37,6 +52,7 @@ app.controller('ctrlMain', function($scope,$http){
 
 		//sending all the array of movies found
 		$scope.movies = movies;
+		$location.url("/search");
 	}
 
 
@@ -44,8 +60,6 @@ app.controller('ctrlMain', function($scope,$http){
 	$scope.preview = function(id){
 	 $scope.actors = '';
 	 $scope.rating = '';
-
-
 
 		$http.get(URL + "i=" + id)
 		.then( function(success) {
@@ -59,6 +73,17 @@ app.controller('ctrlMain', function($scope,$http){
 		},function(Error){
 			$scope.message = Error;
 		});
+	}
+
+	//method show details
+
+});
+
+app.controller('detailController', function($scope,$routeParams){
+	var id = $routeParams.id;
+
+	$scope.getSeasons = function(){
+		
 	}
 });
 

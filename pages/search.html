@@ -1,0 +1,28 @@
+		Results:
+		<div class="row" infinite-scroll="loadMore()" infinite-scroll-distance='10'>
+			<div class="col-md-4" ng-repeat="movie in movies | orderBy:'movie.Title':true">
+				<figure>					
+					<div class="hovereffect"> 
+						<div ng-if="movie.Poster != 'N/A'" >
+						<a href="#detail/{{movie.imdbID}}">
+							<img ng-mouseover="preview(movie.imdbID)"  ng-src="{{movie.Poster}}" class="img-thumbnail hovereffect" alt="{{movie.Title}}" ng-click="">
+						</a>	
+						</div>
+						<div ng-if="movie.Poster === 'N/A'">
+							<img ng-mouseover="preview(movie.imdbID)" ng-src="http://placehold.it/400x600&text=No Image" class="img-thumbnail hovereffect" alt="{{movie.Title}}" >
+							
+						</div>
+
+				        <div class="overlay">				           
+				           	<h2>Rating</h2>
+				           	{{rating}}
+				           	<h2>Actors</h2>				         		           
+				           	Actors here
+				        </div>													
+					</div>	
+					<figcaption>{{movie.Title}}</figcaption>
+				</figure>
+
+			
+			</div>
+		</div>
