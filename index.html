@@ -26,19 +26,23 @@
 
 		<div class="row">
 			<div class="col-md-12">
-				<input type="text" ng-model="txtSearch" ng-change="getMovies(this)" class="form-control txtSearch" ng-show="search">
+				<input type="text" ng-model="txtSearch" my-enter="getMovies(this)" class="form-control txtSearch" ng-show="search">
 			</div>			
 		</div>	
 
-		<div class="row">
-			<div class="col-md-4" ng-repeat="movie in movies">
+		<div ng-model="message">
+			<strong>{{message}}</strong>
+		</div>
+
+		<div class="row" infinite-scroll="loadMore()" infinite-scroll-distance='10'>
+			<div class="col-md-4" ng-repeat="movie in movies | orderBy:'movie.Title':true">
 				<figure>
 					<a href="">
 						<div ng-if="movie.Poster != 'N/A'" >
 							<img ng-src="{{movie.Poster}}" class="img-thumbnail" alt="{{movie.Title}}" >
 						</div>
 						<div ng-if="movie.Poster === 'N/A'" >
-							<img ng-src="http://epaper2.mid-day.com/images/no_image_thumb.gif" class="img-thumbnail" alt="{{movie.Title}}" >
+							<img ng-src="http://placehold.it/400x300&text=No Image" class="img-thumbnail" alt="{{movie.Title}}" >
 						</div>						
 					</a>
 					<figcaption>{{movie.Title}}</figcaption>
@@ -53,6 +57,9 @@
     <script src="js/angular.min.js"></script>
 	<script src="js/angular-route.min.js"></script>
 	<script src="js/app.js"></script>
+	<script src="js/ng-infinite-scroll.min.js"></script>
+
+
 
 
 </body>

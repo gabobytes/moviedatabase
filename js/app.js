@@ -1,10 +1,10 @@
-var app = angular.module('imdbApp',[]);
+var app = angular.module('imdbApp',['infinite-scroll']);
 
 app.controller('ctrlMain', function($scope,$http){
 
 	//Variables
-	var URL = 'http://www.omdbapi.com/?s=';
-	var movies = [];
+	var URL = 'http://www.omdbapi.com/?s=';	
+	
 
 	//show or hide text box
 	$scope.search = false;
@@ -12,29 +12,47 @@ app.controller('ctrlMain', function($scope,$http){
 	//method search
 	$scope.getMovies = function(query){
 	query  = $scope.txtSearch;
+	var movies = [];
+	$scope.message = '';
 		
-	//watcher to reset results array when start a new search
-	$scope.$watch('query', function(){
-		if(query === ''){			
-			movies = [];
-		}
-	});	
-
 	//get data from IDMB API
 	if(query != ''){		
 		$http.get(URL + query)
 		.then( function (success){
-			//save all results				
-			success.data.Search.forEach(function(element){			
-				movies.push(element);
-			});
+				
+			//get status of search
+			status = success.data.Response;
 
-		}, function( error ){
-			console.log(error);
+				if(status ==='True'){
+					//save all results						
+					success.data.Search.forEach(function(element){			
+					movies.push(element);
+					});
+				}else{
+				  $scope.message = 'Movie/Serie Not Found';
+				}					
+
+		}, function( Error ){
+			$scope.message = Error;
 		 });
 		}
 
-		console.log(movies.reverse);
-	return $scope.movies = movies.reverse();
+		$scope.movies = movies;
 	}
+});
+
+
+//directive to receive enter key and make the search
+app.directive('myEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.myEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
 });
