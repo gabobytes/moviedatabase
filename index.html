@@ -35,11 +35,11 @@
 		</div>
 
 		<div class="row" infinite-scroll="loadMore()" infinite-scroll-distance='10'>
-			<div class="col-md-4" ng-repeat="movie in movies | orderBy:'movie.Title':true">
-				<figure>
-					<a href="">
+			<div class="col-md-4" ng-repeat="movie in movies | orderBy:'movie.Title':true" id="{{movie.imdbID}}">
+				<figure ng-mouseover="preview(movie.imdbID)" >
+					<a href="#">
 						<div ng-if="movie.Poster != 'N/A'" >
-							<img ng-src="{{movie.Poster}}" class="img-thumbnail" alt="{{movie.Title}}" >
+							<img ng-src="{{movie.Poster}}" class="img-thumbnail" alt="{{movie.Title}}">
 						</div>
 						<div ng-if="movie.Poster === 'N/A'" >
 							<img ng-src="http://placehold.it/400x300&text=No Image" class="img-thumbnail" alt="{{movie.Title}}" >

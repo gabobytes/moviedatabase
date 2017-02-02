@@ -3,7 +3,7 @@ var app = angular.module('imdbApp',['infinite-scroll']);
 app.controller('ctrlMain', function($scope,$http){
 
 	//Variables
-	var URL = 'http://www.omdbapi.com/?s=';	
+	var URL = 'http://www.omdbapi.com/?';	
 	
 
 	//show or hide text box
@@ -17,7 +17,7 @@ app.controller('ctrlMain', function($scope,$http){
 		
 	//get data from IDMB API
 	if(query != ''){		
-		$http.get(URL + query)
+		$http.get(URL + "s=" +query)
 		.then( function (success){
 				
 			//get status of search
@@ -39,6 +39,12 @@ app.controller('ctrlMain', function($scope,$http){
 
 		//sending all the array of movies found
 		$scope.movies = movies;
+	}
+
+
+	//method show info movie on mouse over
+	$scope.preview = function(id){
+		//http://www.omdbapi.com/?i=tt1147717
 	}
 });
 
