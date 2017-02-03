@@ -1,10 +1,10 @@
-		<div class="row" infinite-scroll="loadMore()" infinite-scroll-distance='10'>
+		<div class="row">
 			<div class="col-md-4" ng-repeat="movie in movies | orderBy:'movie.Title':true">
 				<figure>					
 					<div class="hovereffect"> 
 						<div ng-if="movie.Poster != 'N/A'" >
 						<a href="#detail/{{movie.imdbID}}">
-							<img ng-mouseover="preview(movie.imdbID)"  ng-src="{{movie.Poster}}" class="img-thumbnail hovereffect" alt="{{movie.Title}}" ng-click="">
+							<img ng-mouseover="preview(movie.imdbID)"  ng-src="{{movie.Poster}}" class="img-thumbnail hovereffect" alt="{{movie.Title}}">
 						</a>	
 						</div>
 						<div ng-if="movie.Poster === 'N/A'">

@@ -137,3 +137,12 @@ transform:translatey(0);
 -webkit-transition-delay:.2s;
 transition-delay:.2s;
 }
+
+.seasons > a {
+	color: #A0A0B1;
+	font-weight: bold;
+	background-color: #eee;
+	padding: 5px;
+	border-color: black;
+	border-width: 1px;
+}

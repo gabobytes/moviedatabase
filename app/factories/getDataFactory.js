@@ -23,10 +23,7 @@ angular.module('imdbApp').factory('getDataFactory', function($http){
 			return titles;
 		}
 
-		//getActors with id
-		API.getActors = function(id){
-			
-		}
+		
 
 
 		return API;			

@@ -1,9 +1,23 @@
 <hr>
 <div class="row">
 	<div class="col-md-6">
-		
+		<figure>
+			<div ng-if="Poster != 'N/A'" >			
+				<img ng-src="{{Poster}}" class="img-thumbnail" alt="{{Title}}" >			
+			</div>
+			<div ng-if="Poster === 'N/A'">			
+				<img ng-src="http://placehold.it/400x600&text=No Image" class="img-thumbnail" alt="{{Title}}" >			
+			</div>
+		</figure>
+		<figcaption>{{Title}}</figcaption>
 	</div>
 	<div class="col-md-6">
 		<h2>Seasons</h2>
+		<span ng-repeat="season in seasons" class="seasons" ng-click="getEpisodes(season)">
+			<a href="">{{season}}</a>
+		</span>
+		<ol>
+			<li ng-repeat="Episodes in episode">{{episode}}</li>
+		</ol>
 	</div>
 </div>

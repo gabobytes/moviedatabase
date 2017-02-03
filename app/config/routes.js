@@ -8,7 +8,7 @@ angular.module('imdbApp').config(function($routeProvider,$locationProvider){
 		})
 		.when('/detail/:id',{
 			templateUrl	: 'pages/detail.html',
-			controller 	: 'detailController'
+			controller 	: 'mainController'
 		})
 		.otherwise({ redirectTo: '/' });
 });

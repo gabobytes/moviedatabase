@@ -1,4 +1,4 @@
-angular.module('imdbApp').controller('mainController', function($scope,$http,$location,getDataFactory){
+angular.module('imdbApp').controller('mainController', function($scope,$http,$routeParams,$location,getDataFactory){
 
 	//show or hide text box
 	$scope.search = false;
@@ -53,4 +53,40 @@ angular.module('imdbApp').controller('mainController', function($scope,$http,$lo
 	 		$scope.message = Error;
 	 	});
 	}
+
+
+
+	//get individual Details
+	var id = $routeParams.id;	
+	var params = 'i='+id;
+
+		getDataFactory.getObject(params)
+		  .then(function(response){
+		  	
+		  	console.log(response.data.Title);
+		  	$scope.Title = response.data.Title;
+		  	$scope.Poster = response.data.Poster;
+		  	var totalSeasons = response.data.totalSeasons;
+		  	arraySeasons = [];
+		  	for(var x= 1; x<= totalSeasons; x++){
+		  		arraySeasons.push(x);		  		
+		  	}
+		  	$scope.seasons = arraySeasons;
+		  },function(Error){
+		  	$scope.message = Error;
+		  });
+
+	$scope.getEpisodes = function(season){
+		var params = 'i='+id+'&season='+season;
+
+		getDataFactory.getObject(params)
+		 .then(function(response){
+		 	console.log(response.data);
+		 	$scope.Episodes = response.data;
+		 },function(Error){
+		 	$scope.message = Error;
+		 });
+	}
+
 });
+
