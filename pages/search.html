@@ -1,4 +1,3 @@
-		Results:
 		<div class="row" infinite-scroll="loadMore()" infinite-scroll-distance='10'>
 			<div class="col-md-4" ng-repeat="movie in movies | orderBy:'movie.Title':true">
 				<figure>					
@@ -18,7 +17,7 @@
 				           	<h2>Rating</h2>
 				           	{{rating}}
 				           	<h2>Actors</h2>				         		           
-				           	Actors here
+				           	{{actors}}
 				        </div>													
 					</div>	
 					<figcaption>{{movie.Title}}</figcaption>

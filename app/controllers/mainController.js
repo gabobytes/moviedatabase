@@ -43,8 +43,11 @@ angular.module('imdbApp').controller('mainController', function($scope,$http,$lo
 	 	.then(function(response){
 	 		//check status 
 	 		if(getDataFactory.getStatus(response) === 1){
+	 			var arrayActors = [];
 	 			$scope.rating = response.data.imdbRating;
-	 			//getActors
+	 			arrayActors = response.data.Actors.split(',');
+	 			arrayActors.pop();
+	 			$scope.actors = arrayActors;
 	 		}
 	 	},function(Error){
 	 		$scope.message = Error;
