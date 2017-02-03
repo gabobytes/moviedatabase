@@ -1,9 +1,3 @@
-var app = angular.module('imdbApp',['infinite-scroll','ngRoute']);
-
-
-
-
-
 //directive to receive enter key and make the search
 app.directive('myEnter', function () {
     return function (scope, element, attrs) {

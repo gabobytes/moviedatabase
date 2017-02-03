@@ -9,8 +9,9 @@
 						</a>	
 						</div>
 						<div ng-if="movie.Poster === 'N/A'">
+						<a href="#detail/{{movie.imdbID}}">
 							<img ng-mouseover="preview(movie.imdbID)" ng-src="http://placehold.it/400x600&text=No Image" class="img-thumbnail hovereffect" alt="{{movie.Title}}" >
-							
+						</a>	
 						</div>
 
 				        <div class="overlay">				           
