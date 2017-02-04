@@ -58,6 +58,10 @@ angular.module('imdbApp').controller('mainController', function($scope,$http,$ro
 	var params = "tv/" + id +"?";
 
 	if(typeof id != 'undefined' && typeof id != 'null'){
+
+		//show button back
+		$scope.back = 1;
+
 		getDataFactory.getObject(params)
 		  .then(function(response){	
 		  	

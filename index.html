@@ -12,8 +12,13 @@
 </head>
 <body ng-controller="mainController">
 	<div class="container">
+
 		<div class="row">
-			<div class="col-md-4">
+		<div class="col-md-2" ng-if="{{back===1}}">
+			<div class="backBtn">Back</div>
+		</div>
+			<div class="col-md-2">				
+			
 				<h1>Shows</h1>
 			</div>
 			<div class="col-md-4 offset-md-4" style="text-align: right;">
