@@ -53,7 +53,7 @@ angular.module('imdbApp').controller('mainController', function($scope,$http,$ro
 
 
 
-	//get individual Details
+	//get individual Details like Poster and Name of serie
 	var id = $routeParams.id;	
 	var params = "tv/" + id +"?";
 
@@ -74,30 +74,23 @@ angular.module('imdbApp').controller('mainController', function($scope,$http,$ro
 		  	$scope.message = Error;
 		  });
 	}
-		
-	
+			
 
 	$scope.getEpisodes = function(season){
-		var params = 'tv/'+id+'/season/'+season+'?';
-
-		//https://api.themoviedb.org/3/tv/1418/season/1?api_key=2342d5fcd25e5d5a169bee2ed0cb1dee&language=en-US
+		var params = 'tv/'+id+'/season/'+season+'?';	
 
 		getDataFactory.getObject(params)
-		 .then(function(response){
-		 	console.log(response.data.episodes[1].air_date);
-		 	var arrayEpisodes = [];
-		 	
-		 	response.data.episodes.forEach( function(element, index) {		 		
-		 		console.log(element.name);
-		 		arrayEpisodes.push(element);
-		 	});
-
-		 	console.log(arrayEpisodes);
-
-		 	$scope.Episodes = arrayEpisodes;
+		 .then(function(response){		 	
+		 	$scope.Episodes = response.data.episodes;
 		 },function(Error){
 		 	$scope.message = Error;
 		 });
+	}
+
+
+	//load by default first season
+	if(typeof id != 'undefined' && typeof id != 'null'){
+		$scope.getEpisodes(1);
 	}
 
 });

@@ -3,7 +3,7 @@
 	<div class="col-md-6">
 		<figure>
 			<div ng-if="Poster != null" >			
-				<img ng-src="https://image.tmdb.org/t/p/w500/{{Poster}}" class="img-thumbnail" alt="{{Title}}" >			
+				<img ng-src="https://image.tmdb.org/t/p/w500/{{Poster}}" class="img-thumbnail" alt="{{Title}}" >		
 			</div>
 			<div ng-if="Poster === null">			
 				<img ng-src="http://placehold.it/400x600&text=No Image" class="img-thumbnail" alt="{{Title}}" >			
@@ -18,8 +18,7 @@
 			<a href="">{{season}}</a>
 		</span>
 		<ol>
-			<!-- <li ng-repeat="Episodes in episode">{{episode.name}}</li>-->
-		</ol>
-		<p ng-repeat="episode in Episodes">{{episode.name}}</p>
+			<li ng-repeat="episode in Episodes">{{episode.name}}</li>
+		</ol>		
 	</div>
 </div>
