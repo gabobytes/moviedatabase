@@ -158,7 +158,7 @@ transition-delay:.2s;
 	font-size: 2.5rem;
 }
 
-.seasons > a, a:visited {
+.seasons > a  {
 	color: #B0B5C8;
 	font-weight: bold;	
 	padding: 15px;
@@ -167,7 +167,16 @@ transition-delay:.2s;
 	background: rgba(246,246,246,33);
 
 }
+.seasons > a:active{
+	color: #B0B5C8;
+	text-decoration: none;
+}
+.seasons > a:visited{
+	color: #B0B5C8;
+	text-decoration: none;
+}
 .seasons > a:hover{
+	color: #B0B5C8;
 	text-decoration: none;
 }
 .episodes{
