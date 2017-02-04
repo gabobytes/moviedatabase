@@ -8,8 +8,9 @@
 			<div ng-if="Poster === null">			
 				<img ng-src="http://placehold.it/400x600&text=No Image" class="img-thumbnail" alt="{{Title}}" >			
 			</div>
+			<figcaption>{{Title}}</figcaption>
 		</figure>
-		<figcaption>{{Title}}</figcaption>
+		
 	</div>
 	<div class="col-md-6">
 		<h2>Seasons</h2>
@@ -19,6 +20,6 @@
 		<ol>
 			<!-- <li ng-repeat="Episodes in episode">{{episode.name}}</li>-->
 		</ol>
-		<p ng-repeat="Episodes in episode">{{episode.name}}</p>
+		<p ng-repeat="episode in Episodes">{{episode.name}}</p>
 	</div>
 </div>

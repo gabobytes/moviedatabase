@@ -85,13 +85,16 @@ angular.module('imdbApp').controller('mainController', function($scope,$http,$ro
 		getDataFactory.getObject(params)
 		 .then(function(response){
 		 	console.log(response.data.episodes[1].air_date);
+		 	var arrayEpisodes = [];
 		 	
-		 	response.data.episodes.forEach( function(element, index) {
-		 		// statements
+		 	response.data.episodes.forEach( function(element, index) {		 		
 		 		console.log(element.name);
+		 		arrayEpisodes.push(element);
 		 	});
 
-		 	$scope.Episodes = response.data.episodes;
+		 	console.log(arrayEpisodes);
+
+		 	$scope.Episodes = arrayEpisodes;
 		 },function(Error){
 		 	$scope.message = Error;
 		 });
