@@ -2,6 +2,20 @@ angular.module('imdbApp').controller('mainController', function($scope,$http,$ro
 
 	//show or hide text box
 	$scope.search = false;
+	//hide button back
+	$scope.showback = false;
+	//initial class on title Shows
+	$scope.classTitle = 'col-md-4';
+
+	$scope.reset = function()
+	{
+		//show or hide text box
+		$scope.search = false;
+		//hide button back
+		$scope.showback = false;
+		//initial class on title Shows
+		$scope.classTitle = 'col-md-4';
+	}
 	
 	//search
 	$scope.getMovies = function(){
@@ -28,7 +42,14 @@ angular.module('imdbApp').controller('mainController', function($scope,$http,$ro
 		}
 
 		$scope.movies = movies;
-		$location.url("/search");		
+		$location.url("/search");	
+
+		//enable button back
+		$scope.showback = true;	
+		//change size of div Show
+		$scope.classTitle = 'col-md-2';
+		//hide search textbox
+		$scope.search = false;
 
 	}
 
@@ -59,8 +80,8 @@ angular.module('imdbApp').controller('mainController', function($scope,$http,$ro
 
 	if(typeof id != 'undefined' && typeof id != 'null'){
 
-		//show button back
-		$scope.back = 1;
+		
+		
 
 		getDataFactory.getObject(params)
 		  .then(function(response){	

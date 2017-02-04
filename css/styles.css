@@ -17,7 +17,7 @@ body{
 }
 
 
-h1{
+.title{
 	font-family: 'Bebas';
 	font-size: 4rem;
 	color: #A0A0B1;
@@ -38,9 +38,6 @@ h1{
 	padding-top: 5px;
 	padding-bottom: 5px;
 	color: rgba(0,0,0,0.6);
-
-	
-	
 }
 
 
@@ -58,7 +55,7 @@ h1{
 
 figcaption{
 	font-family: 'Bebas';
-	font-size: 2.5rem;
+	font-size: 1.5rem;
 	background-color: #F6F5FA;
 	color: #A0A0B1;
 	border-right-color: #E4E3EB;
@@ -161,15 +158,17 @@ transition-delay:.2s;
 	font-size: 2.5rem;
 }
 
-.seasons > a {
+.seasons > a, a:visited {
 	color: #B0B5C8;
 	font-weight: bold;	
 	padding: 15px;
 	border-bottom: 2px solid #B0B5C8;;	
-	text-decoration: none;
-
+	text-decoration: none;	
 	background: rgba(246,246,246,33);
 
+}
+.seasons > a:hover{
+	text-decoration: none;
 }
 .episodes{
 	 color: #A0A0B1;

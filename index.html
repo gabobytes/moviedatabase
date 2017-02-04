@@ -14,14 +14,16 @@
 	<div class="container">
 
 		<div class="row">
-		<div class="col-md-2" ng-if="{{back===1}}">
-			<div class="backBtn">Back</div>
+		
+		<input type="hidden" ng-model="showback" ng-init="showback">		
+
+		<div class="col-md-2" ng-show="showback" >
+			<div class="backBtn"><a href="#" ng-click="reset()" >Back</a></div>
 		</div>
-			<div class="col-md-2">				
-			
-				<h1>Shows</h1>
-			</div>
-			<div class="col-md-4 offset-md-4" style="text-align: right;">
+		<div class="{{classTitle}}">
+			<span class="title">Shows</span>
+		</div>
+		<div class="col-md-4 offset-md-4" style="text-align: right;">
 				<i class="fa fa-cog fa-4x" aria-hidden="true" style="padding-right: 15px;"></i>
 				<i class="fa fa-search fa-4x" aria-hidden="true" ng-click="search = !search"></i>
 			</div>
