@@ -46,7 +46,7 @@ angular.module('imdbApp').controller('mainController', function($scope,$http,$ro
 
 		//enable button back
 		$scope.showback = true;	
-		//change size of div Show
+		//change size of div Show (button)
 		$scope.classTitle = 'col-md-2';
 		//hide search textbox
 		$scope.search = false;
