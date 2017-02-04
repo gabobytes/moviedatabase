@@ -1,14 +1,16 @@
-//https://weblogs.asp.net/dwahlin/using-an-angularjs-factory-to-interact-with-a-restful-service
 angular.module('imdbApp').factory('getDataFactory', function($http){	
-		var urlBase = 'http://www.omdbapi.com/?';
-		var API = {};
+		var apiKey = '2342d5fcd25e5d5a169bee2ed0cb1dee';
+		var urlBase = 'https://api.themoviedb.org/3/';
+		var API = {};		 
 
-		API.getObject = function(params){
-			return $http.get(urlBase+params);
+
+		API.getObject = function(params){			
+			console.log(urlBase+params+'api_key='+apiKey);
+			return $http.get(urlBase+params+'api_key='+apiKey);
 		}
 
 		API.getStatus = function(object){
-			if(object.data.Response === 'True'){
+			if(object.status >= 200 && object.status <= 299){
 				return 1;
 			}else {
 				return 0;
@@ -22,9 +24,5 @@ angular.module('imdbApp').factory('getDataFactory', function($http){
 			});
 			return titles;
 		}
-
-		
-
-
 		return API;			
 });
