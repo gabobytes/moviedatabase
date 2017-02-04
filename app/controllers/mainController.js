@@ -15,6 +15,8 @@ angular.module('imdbApp').controller('mainController', function($scope,$http,$ro
 		$scope.showback = false;
 		//initial class on title Shows
 		$scope.classTitle = 'col-md-4';
+		//clear input search text box
+		$scope.txtSearch = '';
 	}
 	
 	//search
@@ -50,6 +52,8 @@ angular.module('imdbApp').controller('mainController', function($scope,$http,$ro
 		$scope.classTitle = 'col-md-2';
 		//hide search textbox
 		$scope.search = false;
+		//clear textbox search
+		$scope.txtSearch = '';
 
 	}
 
@@ -78,11 +82,8 @@ angular.module('imdbApp').controller('mainController', function($scope,$http,$ro
 	var id = $routeParams.id;	
 	var params = "tv/" + id +"?";
 
+	//check if url id parameter exists
 	if(typeof id != 'undefined' && typeof id != 'null'){
-
-		
-		
-
 		getDataFactory.getObject(params)
 		  .then(function(response){	
 		  	
@@ -100,7 +101,7 @@ angular.module('imdbApp').controller('mainController', function($scope,$http,$ro
 		  });
 	}
 			
-
+	//method to get episodes from a season
 	$scope.getEpisodes = function(season){
 		var params = 'tv/'+id+'/season/'+season+'?';	
 

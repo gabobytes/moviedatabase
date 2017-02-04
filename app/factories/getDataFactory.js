@@ -3,9 +3,7 @@ angular.module('imdbApp').factory('getDataFactory', function($http){
 		var urlBase = 'https://api.themoviedb.org/3/';
 		var API = {};		 
 
-
-		API.getObject = function(params){			
-			console.log(urlBase+params+'api_key='+apiKey);
+		API.getObject = function(params){						
 			return $http.get(urlBase+params+'api_key='+apiKey);
 		}
 
