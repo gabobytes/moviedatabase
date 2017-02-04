@@ -62,6 +62,7 @@ angular.module('imdbApp').controller('mainController', function($scope,$http,$ro
 	$scope.preview = function(id){	 
 	 $scope.rating = '';
 	 var params = "tv/" + id +"?"; 
+	 var actors = '';
 
 	 getDataFactory.getObject(params)
 	 	.then(function(response){	 		
@@ -74,6 +75,23 @@ angular.module('imdbApp').controller('mainController', function($scope,$http,$ro
 	 	},function(Error){
 	 		$scope.message = Error;
 	 	});
+
+	 //get Actors or Cast	 
+	 params = "tv/"+ id +"/credits?";
+	 getDataFactory.getObject(params)
+	 	.then(function(response){	 		
+	 		if(typeof response.data.cast != 'undefined'){
+	 		for(var x = 0; x < 3; x ++){
+	 			actors += response.data.cast[x].name +",";
+	 		 }
+	 		 $scope.actors = actors.slice(0,-1);
+	 		}else{
+	 			actors = 'No actors';
+	 		}
+	 	},function(Error){
+	 		$scope.message = Error;
+	 	});	
+	 	
 	}
 
 
